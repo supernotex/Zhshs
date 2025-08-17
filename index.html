@@ -3,182 +3,124 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>มือใหม่เทรดทอง</title>
+<title>Survival 3D</title>
 <style>
-/* General */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #1b1b1b;
-    color: #fff;
-    line-height: 1.6;
-}
-a { text-decoration: none; color: inherit; }
-html { scroll-behavior: smooth; }
-
-/* Header */
-header {
-    background-color: #FFD700;
-    color: #000;
-    padding: 30px 0;
-    text-align: center;
-    font-size: 2.5em;
-    font-weight: bold;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-}
-
-/* Navigation */
-nav {
-    background-color: #222;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-}
-nav a {
-    margin: 5px 15px;
-    padding: 12px 16px;
-    color: #FFD700;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: background 0.3s;
-}
-nav a:hover { background-color: #575757; }
-
-/* Section */
-section {
-    max-width: 1000px;
-    margin: 30px auto;
-    padding: 25px;
-    background-color: #222;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-}
-section h2 { color: #FFD700; margin-bottom: 15px; font-size: 2em; }
-section h3 { color: #FF8C00; margin-bottom: 10px; }
-section p, section li { color: #f0f0f0; font-size: 1.1em; }
-section ul { margin-left: 20px; margin-top: 10px; }
-
-/* Footer */
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #222;
-    color: #FFD700;
-    font-weight: bold;
-    margin-top: 40px;
-    box-shadow: 0 -2px 4px rgba(0,0,0,0.3);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    header { font-size: 2em; padding: 25px 0; }
-    nav a { margin: 5px 8px; padding: 10px 12px; font-size: 0.9em; }
-    section { padding: 20px; margin: 20px 10px; }
-}
-
-/* Desktop specific */
-@media (min-width: 1024px) {
-    nav a { font-size: 1.2em; padding: 15px 20px; }
-    section { max-width: 1200px; padding: 40px; }
-    header { font-size: 3em; padding: 40px 0; }
-}
+body { margin:0; overflow:hidden; background:#87ceeb; font-family:Arial;}
+#info { position:fixed; top:10px; left:10px; color:white; font-size:16px; }
 </style>
 </head>
 <body>
+<div id="info">ใช้ W/A/S/D เดิน | คลิกขวาใช้ขวาน</div>
 
-<header>มือใหม่เทรดทอง</header>
-
-<nav>
-    <a href="#start">เริ่มต้น</a>
-    <a href="#market">เลือกตลาด</a>
-    <a href="#risk">จัดการความเสี่ยง</a>
-    <a href="#analysis">วิเคราะห์</a>
-    <a href="#plan">แผนการเทรด</a>
-    <a href="#emotion">ควบคุมอารมณ์</a>
-    <a href="#mistake">ข้อผิดพลาด</a>
-    <a href="#summary">สรุป</a>
-    <a href="#timeframe">Time Frame</a>
-</nav>
-
-<section id="start">
-    <h2>การเริ่มต้นในการเทรด</h2>
-    <p>มือใหม่ควรทำความเข้าใจพื้นฐานของการเทรด เช่น หุ้น, คริปโต, ฟอเร็กซ์ และรู้จักคำศัพท์เบื้องต้นก่อนลงเงินจริง</p>
-    <p><strong>คำแนะนำ:</strong> ศึกษาจากหนังสือ บทความ และลองใช้บัญชี Demo ก่อน</p>
-</section>
-
-<section id="market">
-    <h2>การเลือกตลาด</h2>
-    <p>แต่ละตลาดมีความเสี่ยงและลักษณะเฉพาะตัว เช่น หุ้นเน้นปัจจัยพื้นฐาน, ฟอเร็กซ์เน้นค่าเงิน, คริปโตเน้นความผันผวนสูง</p>
-    <p><strong>คำแนะนำ:</strong> เลือกตลาดที่เหมาะกับเวลาและทุนที่มี</p>
-</section>
-
-<section id="risk">
-    <h2>การจัดการความเสี่ยง</h2>
-    <p>สิ่งสำคัญคือการตั้ง Stop Loss และการกำหนดความเสี่ยงต่อครั้งไม่เกิน 1-2% ของพอร์ต</p>
-    <p><strong>คำแนะนำ:</strong> กำหนดความเสี่ยงและรักษาวินัย</p>
-</section>
-
-<section id="analysis">
-    <h2>การใช้เครื่องมือวิเคราะห์</h2>
-    <p>การวิเคราะห์มีทั้งแบบเทคนิค เช่น กราฟแท่งเทียน, อินดิเคเตอร์ และแบบปัจจัยพื้นฐาน เช่น ข่าวเศรษฐกิจ</p>
-    <p><strong>คำแนะนำ:</strong> ฝึกใช้เครื่องมือวิเคราะห์กราฟเบื้องต้น</p>
-</section>
-
-<section id="plan">
-    <h2>การสร้างแผนการเทรด</h2>
-    <p>แผนการเทรดช่วยให้รู้ว่าจะเข้าเมื่อไหร่ ออกเมื่อไหร่ และไม่ตัดสินใจตามอารมณ์</p>
-    <p><strong>คำแนะนำ:</strong> จดบันทึกการเทรดทุกครั้งเพื่อปรับปรุงแผน</p>
-</section>
-
-<section id="emotion">
-    <h2>การควบคุมอารมณ์</h2>
-    <p>อารมณ์โลภและกลัวมักทำให้เสียเงิน มือใหม่ควรเรียนรู้ที่จะควบคุมและทำตามแผน</p>
-    <p><strong>คำแนะนำ:</strong> หายใจลึก ๆ ก่อนตัดสินใจ อย่าปล่อยให้อารมณ์นำ</p>
-</section>
-
-<section id="mistake">
-    <h2>ข้อผิดพลาดที่พบบ่อย</h2>
-    <p>มือใหม่มักเทรดเยอะเกินไป, ใช้ Leverage สูง หรือไม่ใส่ Stop Loss</p>
-    <p><strong>คำแนะนำ:</strong> อย่ารีบรวยเร็ว ควรเน้นความสม่ำเสมอ</p>
-</section>
-
-<section id="summary">
-    <h2>สรุปคำแนะนำ</h2>
-    <p>เริ่มจากบัญชีทดลอง ศึกษาตลาด และค่อย ๆ ลงเงินจริงด้วยจำนวนเล็ก ๆ จนกว่าจะมั่นใจ</p>
-    <p><strong>คำแนะนำ:</strong> ฝึกฝนและเรียนรู้อย่างต่อเนื่อง จะทำให้เก่งขึ้น</p>
-</section>
-
-<section id="timeframe">
-    <h2>การเลือก Time Frame</h2>
-    <p>การเลือก Time Frame คือการกำหนดช่วงเวลาของกราฟที่ใช้วิเคราะห์ เช่น 1 นาที, 5 นาที, 1 ชั่วโมง หรือ 1 วัน  
-    Time Frame ที่เล็กจะเห็นการเคลื่อนไหวระยะสั้น เหมาะกับ Scalping  
-    Time Frame ที่ใหญ่จะเห็นภาพรวม เหมาะกับ Swing หรือ Position Trading</p>
-
-    <h3>ทริคการใช้ Time Frame (มือใหม่)</h3>
-    <ul>
-        <li><strong>CRT (Corrective Retracement Trading):</strong> ใช้ Time Frame ใหญ่ดูแนวโน้มหลัก แล้วเข้าเทรดจังหวะกลับตัวเล็ก</li>
-        <li><strong>ICT (Inner Circle Trader):</strong> ใช้ Time Frame ใหญ่หา Support/Resistance และโซนสำคัญ</li>
-        <li><strong>MSS (Market Structure Shift):</strong> สังเกตจุดเปลี่ยนโครงสร้างตลาด ระหว่าง Time Frame ขนาดเล็กและใหญ่</li>
-        <li><strong>FVG (Fair Value Gap):</strong> มองช่องว่างราคา ใช้ Time Frame เล็กเป็นจุดเข้าออก</li>
-        <li><strong>OB (Order Block):</strong> ใช้ Time Frame ใหญ่ดูโซนสั่งซื้อขายของสถาบัน แล้วเข้าเทรดตาม Time Frame เล็ก</li>
-    </ul>
-
-    <p><strong>คำแนะนำ:</strong> มือใหม่ควรเริ่มจาก Time Frame ใหญ่ก่อน เพื่อเห็นภาพรวม แล้วค่อยซูมเข้า Time Frame เล็กเมื่อมีสัญญาณชัดเจน</p>
-</section>
-
-<footer>สร้างด้วย BII</footer>
+<script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.158.0/examples/js/controls/PointerLockControls.js"></script>
 
 <script>
-// Smooth Scroll Alternative (ถ้าต้องการ custom)
-document.querySelectorAll('nav a').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-});
-</script>
+// Scene, Camera, Renderer
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x87ceeb);
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({antialias:true});
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
 
+// Light
+const light = new THREE.DirectionalLight(0xffffff,1);
+light.position.set(10,20,10);
+scene.add(light);
+
+// Ground
+const groundGeo = new THREE.PlaneGeometry(100,100);
+const groundMat = new THREE.MeshPhongMaterial({color:0x228B22});
+const ground = new THREE.Mesh(groundGeo, groundMat);
+ground.rotation.x = -Math.PI/2;
+scene.add(ground);
+
+// ตัวละคร (กล่อง)
+const playerGeo = new THREE.BoxGeometry(1,2,1);
+const playerMat = new THREE.MeshPhongMaterial({color:0xff0000});
+const player = new THREE.Mesh(playerGeo, playerMat);
+player.position.y = 1;
+scene.add(player);
+
+// บ้าน (cube)
+const houseGeo = new THREE.BoxGeometry(4,4,4);
+const houseMat = new THREE.MeshPhongMaterial({color:0x8B4513});
+const house = new THREE.Mesh(houseGeo, houseMat);
+house.position.set(10,2,0);
+scene.add(house);
+
+// ต้นไม้ (cube + cylinder)
+function addTree(x,z){
+    const trunkGeo = new THREE.CylinderGeometry(0.3,0.3,3);
+    const trunkMat = new THREE.MeshPhongMaterial({color:0x8B4513});
+    const trunk = new THREE.Mesh(trunkGeo,trunkMat);
+    trunk.position.set(x,1.5,z);
+    scene.add(trunk);
+
+    const leavesGeo = new THREE.ConeGeometry(1.5,3,8);
+    const leavesMat = new THREE.MeshPhongMaterial({color:0x006400});
+    const leaves = new THREE.Mesh(leavesGeo, leavesMat);
+    leaves.position.set(x,4.5,z);
+    scene.add(leaves);
+}
+for(let i=0;i<20;i++){
+    addTree(Math.random()*50-25, Math.random()*50-25);
+}
+
+// สัตว์ร้าย (cube)
+const enemyGeo = new THREE.BoxGeometry(1,1,1);
+const enemyMat = new THREE.MeshPhongMaterial({color:0x0000ff});
+const enemy = new THREE.Mesh(enemyGeo, enemyMat);
+enemy.position.set(-10,0.5,-10);
+scene.add(enemy);
+
+// Controls
+const controls = new THREE.PointerLockControls(camera, renderer.domElement);
+document.body.addEventListener('click', ()=>{ controls.lock(); });
+
+camera.position.set(0,2,5);
+controls.getObject().position.set(player.position.x,player.position.y,player.position.z);
+scene.add(controls.getObject());
+
+// การเดิน W/A/S/D
+const move = {forward:false,back:false,left:false,right:false};
+document.addEventListener('keydown', e=>{
+    if(e.key==='w') move.forward=true;
+    if(e.key==='s') move.back=true;
+    if(e.key==='a') move.left=true;
+    if(e.key==='d') move.right=true;
+});
+document.addEventListener('keyup', e=>{
+    if(e.key==='w') move.forward=false;
+    if(e.key==='s') move.back=false;
+    if(e.key==='a') move.left=false;
+    if(e.key==='d') move.right=false;
+});
+
+// Animation
+function animate(){
+    requestAnimationFrame(animate);
+
+    // เดิน
+    const speed = 0.1;
+    if(move.forward) controls.moveForward(speed);
+    if(move.back) controls.moveForward(-speed);
+    if(move.left) controls.moveRight(-speed);
+    if(move.right) controls.moveRight(speed);
+
+    // ศัตรูเดินเข้าหาตัวผู้เล่น
+    const dirX = player.position.x - enemy.position.x;
+    const dirZ = player.position.z - enemy.position.z;
+    const dist = Math.sqrt(dirX*dirX + dirZ*dirZ);
+    if(dist>0.5){
+        enemy.position.x += dirX/dist*0.02;
+        enemy.position.z += dirZ/dist*0.02;
+    }
+
+    renderer.render(scene,camera);
+}
+animate();
+</script>
 </body>
 </html>
