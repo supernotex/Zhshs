@@ -1,163 +1,165 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>มือใหม่เทรดทอง</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            line-height: 1.6;
-            background-color: #1e1e1e;
-            color: #fff;
-        }
-        header {
-            background-color: #FFD700;
-            color: #000;
-            padding: 20px 0;
-            text-align: center;
-            font-size: 2em;
-            font-weight: bold;
-        }
-        nav {
-            background-color: #333;
-            overflow: hidden;
-        }
-        nav a {
-            float: left;
-            display: block;
-            color: #FFD700;
-            text-align: center;
-            padding: 12px 16px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        nav a:hover {
-            background-color: #575757;
-        }
-        section {
-            padding: 20px;
-            max-width: 900px;
-            margin: auto;
-            background-color: #222;
-            margin-top: 20px;
-            border-radius: 8px;
-        }
-        h2 {
-            color: #FFD700;
-            text-shadow: 1px 1px 2px #000;
-        }
-        h3 {
-            color: #FF8C00;
-        }
-        p {
-            color: #f0f0f0;
-        }
-        strong {
-            color: #FF4500;
-        }
-        ul {
-            margin-left: 20px;
-        }
-        li {
-            margin-bottom: 8px;
-        }
-        footer {
-            text-align: center;
-            padding: 15px;
-            background-color: #333;
-            color: #FFD700;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>มือใหม่เทรดทอง</title>
+<style>
+    /* General */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #1b1b1b;
+        color: #fff;
+        line-height: 1.6;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* Header */
+    header {
+        background-color: #FFD700;
+        color: #000;
+        padding: 30px 0;
+        text-align: center;
+        font-size: 2.5em;
+        font-weight: bold;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    }
+
+    /* Navigation */
+    nav {
+        background-color: #222;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    nav a {
+        margin: 5px 15px;
+        padding: 12px 16px;
+        color: #FFD700;
+        font-weight: bold;
+        border-radius: 5px;
+        transition: background 0.3s;
+    }
+    nav a:hover { background-color: #575757; }
+
+    /* Section */
+    section {
+        max-width: 1000px;
+        margin: 30px auto;
+        padding: 25px;
+        background-color: #222;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    }
+    section h2 { color: #FFD700; margin-bottom: 15px; font-size: 2em; }
+    section h3 { color: #FF8C00; margin-bottom: 10px; }
+    section p, section li { color: #f0f0f0; font-size: 1.1em; }
+    section ul { margin-left: 20px; margin-top: 10px; }
+
+    /* Footer */
+    footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #222;
+        color: #FFD700;
+        font-weight: bold;
+        margin-top: 40px;
+        box-shadow: 0 -2px 4px rgba(0,0,0,0.3);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        header { font-size: 2em; padding: 25px 0; }
+        nav a { margin: 5px 8px; padding: 10px 12px; font-size: 0.9em; }
+        section { padding: 20px; margin: 20px 10px; }
+    }
+</style>
 </head>
 <body>
-    <header>
-        มือใหม่เทรดทอง
-    </header>
 
-    <nav>
-        <a href="#start">เริ่มต้น</a>
-        <a href="#market">เลือกตลาด</a>
-        <a href="#risk">จัดการความเสี่ยง</a>
-        <a href="#analysis">วิเคราะห์</a>
-        <a href="#plan">แผนการเทรด</a>
-        <a href="#emotion">ควบคุมอารมณ์</a>
-        <a href="#mistake">ข้อผิดพลาด</a>
-        <a href="#summary">สรุป</a>
-        <a href="#timeframe">Time Frame</a>
-    </nav>
+<header>มือใหม่เทรดทอง</header>
 
-    <section id="start">
-        <h2>การเริ่มต้นในการเทรด</h2>
-        <p>มือใหม่ควรทำความเข้าใจพื้นฐานของการเทรด เช่น หุ้น, คริปโต, ฟอเร็กซ์ และรู้จักคำศัพท์เบื้องต้นก่อนลงเงินจริง</p>
-        <p><strong>คำแนะนำ:</strong> ศึกษาจากหนังสือ บทความ และลองใช้บัญชี Demo ก่อน</p>
-    </section>
+<nav>
+    <a href="#start">เริ่มต้น</a>
+    <a href="#market">เลือกตลาด</a>
+    <a href="#risk">จัดการความเสี่ยง</a>
+    <a href="#analysis">วิเคราะห์</a>
+    <a href="#plan">แผนการเทรด</a>
+    <a href="#emotion">ควบคุมอารมณ์</a>
+    <a href="#mistake">ข้อผิดพลาด</a>
+    <a href="#summary">สรุป</a>
+    <a href="#timeframe">Time Frame</a>
+</nav>
 
-    <section id="market">
-        <h2>การเลือกตลาด</h2>
-        <p>แต่ละตลาดมีความเสี่ยงและลักษณะเฉพาะตัว เช่น หุ้นเน้นปัจจัยพื้นฐาน, ฟอเร็กซ์เน้นค่าเงิน, คริปโตเน้นความผันผวนสูง</p>
-        <p><strong>คำแนะนำ:</strong> เลือกตลาดที่เหมาะกับเวลาและทุนที่มี</p>
-    </section>
+<section id="start">
+    <h2>การเริ่มต้นในการเทรด</h2>
+    <p>มือใหม่ควรทำความเข้าใจพื้นฐานของการเทรด เช่น หุ้น, คริปโต, ฟอเร็กซ์ และรู้จักคำศัพท์เบื้องต้นก่อนลงเงินจริง</p>
+    <p><strong>คำแนะนำ:</strong> ศึกษาจากหนังสือ บทความ และลองใช้บัญชี Demo ก่อน</p>
+</section>
 
-    <section id="risk">
-        <h2>การจัดการความเสี่ยง</h2>
-        <p>สิ่งสำคัญคือการตั้ง Stop Loss และการกำหนดความเสี่ยงต่อครั้งไม่เกิน 1-2% ของพอร์ต</p>
-        <p><strong>คำแนะนำ:</strong> กำหนดความเสี่ยงและรักษาวินัย</p>
-    </section>
+<section id="market">
+    <h2>การเลือกตลาด</h2>
+    <p>แต่ละตลาดมีความเสี่ยงและลักษณะเฉพาะตัว เช่น หุ้นเน้นปัจจัยพื้นฐาน, ฟอเร็กซ์เน้นค่าเงิน, คริปโตเน้นความผันผวนสูง</p>
+    <p><strong>คำแนะนำ:</strong> เลือกตลาดที่เหมาะกับเวลาและทุนที่มี</p>
+</section>
 
-    <section id="analysis">
-        <h2>การใช้เครื่องมือวิเคราะห์</h2>
-        <p>การวิเคราะห์มีทั้งแบบเทคนิค เช่น กราฟแท่งเทียน, อินดิเคเตอร์ และแบบปัจจัยพื้นฐาน เช่น ข่าวเศรษฐกิจ</p>
-        <p><strong>คำแนะนำ:</strong> ฝึกใช้เครื่องมือวิเคราะห์กราฟเบื้องต้น</p>
-    </section>
+<section id="risk">
+    <h2>การจัดการความเสี่ยง</h2>
+    <p>สิ่งสำคัญคือการตั้ง Stop Loss และการกำหนดความเสี่ยงต่อครั้งไม่เกิน 1-2% ของพอร์ต</p>
+    <p><strong>คำแนะนำ:</strong> กำหนดความเสี่ยงและรักษาวินัย</p>
+</section>
 
-    <section id="plan">
-        <h2>การสร้างแผนการเทรด</h2>
-        <p>แผนการเทรดช่วยให้รู้ว่าจะเข้าเมื่อไหร่ ออกเมื่อไหร่ และไม่ตัดสินใจตามอารมณ์</p>
-        <p><strong>คำแนะนำ:</strong> จดบันทึกการเทรดทุกครั้งเพื่อปรับปรุงแผน</p>
-    </section>
+<section id="analysis">
+    <h2>การใช้เครื่องมือวิเคราะห์</h2>
+    <p>การวิเคราะห์มีทั้งแบบเทคนิค เช่น กราฟแท่งเทียน, อินดิเคเตอร์ และแบบปัจจัยพื้นฐาน เช่น ข่าวเศรษฐกิจ</p>
+    <p><strong>คำแนะนำ:</strong> ฝึกใช้เครื่องมือวิเคราะห์กราฟเบื้องต้น</p>
+</section>
 
-    <section id="emotion">
-        <h2>การควบคุมอารมณ์</h2>
-        <p>อารมณ์โลภและกลัวมักทำให้เสียเงิน มือใหม่ควรเรียนรู้ที่จะควบคุมและทำตามแผน</p>
-        <p><strong>คำแนะนำ:</strong> หายใจลึก ๆ ก่อนตัดสินใจ อย่าปล่อยให้อารมณ์นำ</p>
-    </section>
+<section id="plan">
+    <h2>การสร้างแผนการเทรด</h2>
+    <p>แผนการเทรดช่วยให้รู้ว่าจะเข้าเมื่อไหร่ ออกเมื่อไหร่ และไม่ตัดสินใจตามอารมณ์</p>
+    <p><strong>คำแนะนำ:</strong> จดบันทึกการเทรดทุกครั้งเพื่อปรับปรุงแผน</p>
+</section>
 
-    <section id="mistake">
-        <h2>ข้อผิดพลาดที่พบบ่อย</h2>
-        <p>มือใหม่มักเทรดเยอะเกินไป, ใช้ Leverage สูง หรือไม่ใส่ Stop Loss</p>
-        <p><strong>คำแนะนำ:</strong> อย่ารีบรวยเร็ว ควรเน้นความสม่ำเสมอ</p>
-    </section>
+<section id="emotion">
+    <h2>การควบคุมอารมณ์</h2>
+    <p>อารมณ์โลภและกลัวมักทำให้เสียเงิน มือใหม่ควรเรียนรู้ที่จะควบคุมและทำตามแผน</p>
+    <p><strong>คำแนะนำ:</strong> หายใจลึก ๆ ก่อนตัดสินใจ อย่าปล่อยให้อารมณ์นำ</p>
+</section>
 
-    <section id="summary">
-        <h2>สรุปคำแนะนำ</h2>
-        <p>เริ่มจากบัญชีทดลอง ศึกษาตลาด และค่อย ๆ ลงเงินจริงด้วยจำนวนเล็ก ๆ จนกว่าจะมั่นใจ</p>
-        <p><strong>คำแนะนำ:</strong> ฝึกฝนและเรียนรู้อย่างต่อเนื่อง จะทำให้เก่งขึ้น</p>
-    </section>
+<section id="mistake">
+    <h2>ข้อผิดพลาดที่พบบ่อย</h2>
+    <p>มือใหม่มักเทรดเยอะเกินไป, ใช้ Leverage สูง หรือไม่ใส่ Stop Loss</p>
+    <p><strong>คำแนะนำ:</strong> อย่ารีบรวยเร็ว ควรเน้นความสม่ำเสมอ</p>
+</section>
 
-    <section id="timeframe">
-        <h2>การเลือก Time Frame</h2>
-        <p>การเลือก Time Frame คือการกำหนดช่วงเวลาของกราฟที่ใช้วิเคราะห์ เช่น 1 นาที, 5 นาที, 1 ชั่วโมง หรือ 1 วัน  
-        Time Frame ที่เล็กจะเห็นการเคลื่อนไหวระยะสั้น เหมาะกับ Scalping  
-        Time Frame ที่ใหญ่จะเห็นภาพรวม เหมาะกับ Swing หรือ Position Trading</p>
+<section id="summary">
+    <h2>สรุปคำแนะนำ</h2>
+    <p>เริ่มจากบัญชีทดลอง ศึกษาตลาด และค่อย ๆ ลงเงินจริงด้วยจำนวนเล็ก ๆ จนกว่าจะมั่นใจ</p>
+    <p><strong>คำแนะนำ:</strong> ฝึกฝนและเรียนรู้อย่างต่อเนื่อง จะทำให้เก่งขึ้น</p>
+</section>
 
-        <h3>ทริคการใช้ Time Frame (มือใหม่)</h3>
-        <ul>
-            <li><strong>CRT (Corrective Retracement Trading):</strong> ใช้ Time Frame ใหญ่ดูแนวโน้มหลัก แล้วเข้าเทรดจังหวะกลับตัวเล็ก</li>
-            <li><strong>ICT (Inner Circle Trader):</strong> ใช้ Time Frame ใหญ่หา Support/Resistance และโซนสำคัญ</li>
-            <li><strong>MSS (Market Structure Shift):</strong> สังเกตจุดเปลี่ยนโครงสร้างตลาด ระหว่าง Time Frame ขนาดเล็กและใหญ่</li>
-            <li><strong>FVG (Fair Value Gap):</strong> มองช่องว่างราคา ใช้ Time Frame เล็กเป็นจุดเข้าออก</li>
-            <li><strong>OB (Order Block):</strong> ใช้ Time Frame ใหญ่ดูโซนสั่งซื้อขายของสถาบัน แล้วเข้าเทรดตาม Time Frame เล็ก</li>
-        </ul>
+<section id="timeframe">
+    <h2>การเลือก Time Frame</h2>
+    <p>การเลือก Time Frame คือการกำหนดช่วงเวลาของกราฟที่ใช้วิเคราะห์ เช่น 1 นาที, 5 นาที, 1 ชั่วโมง หรือ 1 วัน  
+    Time Frame ที่เล็กจะเห็นการเคลื่อนไหวระยะสั้น เหมาะกับ Scalping  
+    Time Frame ที่ใหญ่จะเห็นภาพรวม เหมาะกับ Swing หรือ Position Trading</p>
 
-        <p><strong>คำแนะนำ:</strong> มือใหม่ควรเริ่มจาก Time Frame ใหญ่ก่อน เพื่อเห็นภาพรวม แล้วค่อยซูมเข้า Time Frame เล็กเมื่อมีสัญญาณชัดเจน</p>
-    </section>
+    <h3>ทริคการใช้ Time Frame (มือใหม่)</h3>
+    <ul>
+        <li><strong>CRT (Corrective Retracement Trading):</strong> ใช้ Time Frame ใหญ่ดูแนวโน้มหลัก แล้วเข้าเทรดจังหวะกลับตัวเล็ก</li>
+        <li><strong>ICT (Inner Circle Trader):</strong> ใช้ Time Frame ใหญ่หา Support/Resistance และโซนสำคัญ</li>
+        <li><strong>MSS (Market Structure Shift):</strong> สังเกตจุดเปลี่ยนโครงสร้างตลาด ระหว่าง Time Frame ขนาดเล็กและใหญ่</li>
+        <li><strong>FVG (Fair Value Gap):</strong> มองช่องว่างราคา ใช้ Time Frame เล็กเป็นจุดเข้าออก</li>
+        <li><strong>OB (Order Block):</strong> ใช้ Time Frame ใหญ่ดูโซนสั่งซื้อขายของสถาบัน แล้วเข้าเทรดตาม Time Frame เล็ก</li>
+    </ul>
 
-    <footer>
-        สร้างด้วย BII
-    </footer>
+    <p><strong>คำแนะนำ:</strong> มือใหม่ควรเริ่มจาก Time Frame ใหญ่ก่อน เพื่อเห็นภาพรวม แล้วค่อยซูมเข้า Time Frame เล็กเมื่อมีสัญญาณชัดเจน</p>
+</section>
+
+<footer>สร้างด้วย BII</footer>
+
 </body>
 </html>
