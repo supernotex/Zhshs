@@ -5,20 +5,35 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Survival 3D</title>
 <style>
-body { margin:0; overflow:hidden; background:#87ceeb; font-family:Arial;}
-#info { position:fixed; top:10px; left:10px; color:white; font-size:16px; }
+body { margin:0; overflow:hidden; font-family:Arial;}
+#info { position:fixed; top:10px; left:10px; color:white; font-size:16px; z-index:100; }
+#controls button {
+  position: fixed; width:50px; height:50px; font-size:20px; border-radius:8px; background:#555; color:white; border:none; z-index:100;
+}
+#up{ left:60px; bottom:120px; }
+#down{ left:60px; bottom:50px; }
+#left{ left:0px; bottom:85px; }
+#right{ left:120px; bottom:85px; }
 </style>
 </head>
 <body>
-<div id="info">ใช้ W/A/S/D เดิน | คลิกขวาใช้ขวาน</div>
+<div id="info">ใช้ปุ่มล่างหน้าจอเดิน</div>
+<div id="controls">
+  <button id="up">↑</button>
+  <button id="down">↓</button>
+  <button id="left">←</button>
+  <button id="right">→</button>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/examples/js/controls/PointerLockControls.js"></script>
 
 <script>
-// Scene, Camera, Renderer
+// Scene
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x87ceeb);
+
+// Camera & Renderer
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({antialias:true});
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -30,7 +45,7 @@ light.position.set(10,20,10);
 scene.add(light);
 
 // Ground
-const groundGeo = new THREE.PlaneGeometry(100,100);
+const groundGeo = new THREE.PlaneGeometry(200,200);
 const groundMat = new THREE.MeshPhongMaterial({color:0x228B22});
 const ground = new THREE.Mesh(groundGeo, groundMat);
 ground.rotation.x = -Math.PI/2;
@@ -43,14 +58,14 @@ const player = new THREE.Mesh(playerGeo, playerMat);
 player.position.y = 1;
 scene.add(player);
 
-// บ้าน (cube)
+// บ้าน
 const houseGeo = new THREE.BoxGeometry(4,4,4);
 const houseMat = new THREE.MeshPhongMaterial({color:0x8B4513});
 const house = new THREE.Mesh(houseGeo, houseMat);
 house.position.set(10,2,0);
 scene.add(house);
 
-// ต้นไม้ (cube + cylinder)
+// ต้นไม้
 function addTree(x,z){
     const trunkGeo = new THREE.CylinderGeometry(0.3,0.3,3);
     const trunkMat = new THREE.MeshPhongMaterial({color:0x8B4513});
@@ -64,11 +79,11 @@ function addTree(x,z){
     leaves.position.set(x,4.5,z);
     scene.add(leaves);
 }
-for(let i=0;i<20;i++){
+for(let i=0;i<30;i++){
     addTree(Math.random()*50-25, Math.random()*50-25);
 }
 
-// สัตว์ร้าย (cube)
+// สัตว์ร้าย
 const enemyGeo = new THREE.BoxGeometry(1,1,1);
 const enemyMat = new THREE.MeshPhongMaterial({color:0x0000ff});
 const enemy = new THREE.Mesh(enemyGeo, enemyMat);
@@ -77,39 +92,30 @@ scene.add(enemy);
 
 // Controls
 const controls = new THREE.PointerLockControls(camera, renderer.domElement);
-document.body.addEventListener('click', ()=>{ controls.lock(); });
-
 camera.position.set(0,2,5);
 controls.getObject().position.set(player.position.x,player.position.y,player.position.z);
 scene.add(controls.getObject());
 
-// การเดิน W/A/S/D
+// ปุ่มมือถือ
 const move = {forward:false,back:false,left:false,right:false};
-document.addEventListener('keydown', e=>{
-    if(e.key==='w') move.forward=true;
-    if(e.key==='s') move.back=true;
-    if(e.key==='a') move.left=true;
-    if(e.key==='d') move.right=true;
-});
-document.addEventListener('keyup', e=>{
-    if(e.key==='w') move.forward=false;
-    if(e.key==='s') move.back=false;
-    if(e.key==='a') move.left=false;
-    if(e.key==='d') move.right=false;
-});
+function setupButton(id,key){ 
+    document.getElementById(id).addEventListener('touchstart',()=>{ move[key]=true; });
+    document.getElementById(id).addEventListener('touchend',()=>{ move[key]=false; });
+}
+setupButton('up','forward'); setupButton('down','back');
+setupButton('left','left'); setupButton('right','right');
 
-// Animation
+// Animate
 function animate(){
     requestAnimationFrame(animate);
 
-    // เดิน
     const speed = 0.1;
     if(move.forward) controls.moveForward(speed);
     if(move.back) controls.moveForward(-speed);
     if(move.left) controls.moveRight(-speed);
     if(move.right) controls.moveRight(speed);
 
-    // ศัตรูเดินเข้าหาตัวผู้เล่น
+    // ศัตรูเดินเข้าหาผู้เล่น
     const dirX = player.position.x - enemy.position.x;
     const dirZ = player.position.z - enemy.position.z;
     const dist = Math.sqrt(dirX*dirX + dirZ*dirZ);
