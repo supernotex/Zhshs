@@ -7,6 +7,15 @@
 <style>
     /* General */
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    <script>
+document.querySelectorAll('nav a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+});
+</script>
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         background-color: #1b1b1b;
