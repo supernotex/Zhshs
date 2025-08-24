@@ -1,163 +1,229 @@
-<script src="https://cdn.jsdelivr.net/npm/three@0.156.0/build/three.min.js"></script>
-<script>
-let scene = new THREE.Scene();
-let camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-let renderer = new THREE.WebGLRenderer({antialias:true});
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
-
-// ผู้เล่น
-let player = new THREE.Mesh(
-    new THREE.BoxGeometry(1,2,1),
-    new THREE.MeshBasicMaterial({color:0x0000ff})
-);
-player.position.y = 1;
-scene.add(player);
-
-// พื้น
-let ground = new THREE.Mesh(
-    new THREE.PlaneGeometry(100,100),
-    new THREE.MeshBasicMaterial({color:0x228B22})
-);
-ground.rotation.x = -Math.PI/2;
-scene.add(ground);
-
-// กล้องเริ่มต้น
-camera.position.set(0,2,5);
-camera.lookAt(player.position);
-
-// ตัวแปรหมุนกล้อง
-let yaw = 0;   // ซ้าย-ขวา
-let pitch = 0; // ขึ้น-ลง
-let isDragging = false;
-let previousX, previousY;
-
-// ลากเมาส์/นิ้วเพื่อหมุน
-renderer.domElement.addEventListener('mousedown', e=>{
-    isDragging = true;
-    previousX = e.clientX;
-    previousY = e.clientY;
-});
-renderer.domElement.addEventListener('mouseup', e=>{ isDragging=false; });
-renderer.domElement.addEventListener('mousemove', e=>{
-    if(isDragging){
-        let deltaX = e.clientX - previousX;
-        let deltaY = e.clientY - previousY;
-        yaw -= deltaX * 0.005;
-        pitch -= deltaY * 0.005;
-        pitch = Math.max(-Math.PI/2, Math.min(Math.PI/2, pitch));
-        previousX = e.clientX;
-        previousY = e.clientY;
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>สอนวิธีรวย 💸💵</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;600;700&display=swap');
+    body {
+      font-family: "Mitr", sans-serif;
+      background: #0f141a;
+      color: #f1f1f1;
+      line-height: 1.7;
+      margin: 0;
+      padding: 0;
     }
-});
-// สำหรับมือถือ
-renderer.domElement.addEventListener('touchstart', e=>{
-    isDragging = true;
-    previousX = e.touches[0].clientX;
-    previousY = e.touches[0].clientY;
-});
-renderer.domElement.addEventListener('touchend', e=>{ isDragging=false; });
-renderer.domElement.addEventListener('touchmove', e=>{
-    if(isDragging){
-        let deltaX = e.touches[0].clientX - previousX;
-        let deltaY = e.touches[0].clientY - previousY;
-        yaw -= deltaX * 0.005;
-        pitch -= deltaY * 0.005;
-        pitch = Math.max(-Math.PI/2, Math.min(Math.PI/2, pitch));
-        previousX = e.touches[0].clientX;
-        previousY = e.touches[0].clientY;
+    header {
+      background: linear-gradient(135deg,#00e5ff,#0088ff);
+      color: #fff;
+      padding: 30px;
+      text-align: center;
     }
-});
-
-// เป้าหมาย
-let targets = [];
-function spawnTarget(){
-    let target = new THREE.Mesh(
-        new THREE.BoxGeometry(1,1,1),
-        new THREE.MeshBasicMaterial({color:0xff0000})
-    );
-    target.position.set(Math.random()*20-10,0.5,Math.random()*20-10);
-    scene.add(target);
-    targets.push(target);
-}
-for(let i=0;i<5;i++) spawnTarget();
-
-// กระสุน
-let bullets = [];
-let ammo = 20;
-
-// ปุ่มมือถือ
-let keys = {};
-['left','right','up','down'].forEach(dir=>{
-    const btn = document.getElementById(dir);
-    btn.addEventListener('touchstart', e=>{ keys[dir]=true; e.preventDefault(); });
-    btn.addEventListener('touchend', e=>{ keys[dir]=false; e.preventDefault(); });
-});
-document.getElementById('shoot').addEventListener('touchstart', e=>{
-    if(ammo>0){
-        bullets.push({x:player.position.x, y:player.position.y, z:player.position.z, dx:0, dz:-0.5});
-        ammo--;
-        document.getElementById('ammo').innerText = ammo;
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
     }
-    e.preventDefault();
-});
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      padding: 12px 0;
+      background: #071018;
+      border-bottom: 1px solid #16202a;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    nav a {
+      color: #9fefff;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+    nav a:hover { background: rgba(255,255,255,0.03); }
+    .container {
+      max-width: 920px;
+      margin: 24px auto;
+      padding: 0 18px;
+    }
+    .section {
+      padding: 26px;
+      border-bottom: 1px solid #222;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+      margin-bottom: 18px;
+      border-radius: 10px;
+    }
+    h2 {
+      color: #00e5ff;
+      margin-bottom: 12px;
+    }
+    ul { margin-left: 20px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+      background: #1d232b;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    th, td {
+      border: 1px solid #2b3440;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background: #26303b;
+      color: #00e5ff;
+    }
+    .compare-table td { text-align: left; }
+    footer.section {
+      text-align: center;
+      color: #bfcbd6;
+      background: transparent;
+      margin-top: 8px;
+    }
+    .brand {
+      font-weight: 700;
+      color: #ffd166;
+    }
+    @media (max-width:600px){
+      header h1 { font-size: 1.6rem; }
+      nav { flex-wrap: wrap; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>สอนวิธีรวย 💸💵</h1>
+    <p>เริ่มจาก 0 ก็ปั้นทรัพย์สินได้ ถ้ารู้วิธี!</p>
+  </header>
 
-// ควบคุมผู้เล่น
-function movePlayer(){
-    if(keys['left']) player.position.x -= 0.1;
-    if(keys['right']) player.position.x += 0.1;
-    if(keys['up']) player.position.z -= 0.1;
-    if(keys['down']) player.position.z += 0.1;
-}
+  <nav>
+    <a href="#foundations">ฐานการเงิน</a>
+    <a href="#income">เพิ่มรายได้</a>
+    <a href="#invest">ลงทุน</a>
+    <a href="#salary-plans">แผนเงินเดือน</a>
+  </nav>
 
-// ออโต้ล็อกยิง
-function autoLock(){
-    targets.forEach(t=>{
-        let dx = t.position.x - player.position.x;
-        let dz = t.position.z - player.position.z;
-        let dist = Math.sqrt(dx*dx + dz*dz);
-        if(dist<5 && ammo>0){
-            bullets.push({x:player.position.x, y:player.position.y, z:player.position.z, dx:dx/dist*0.2, dz:dz/dist*0.2});
-            ammo--;
-            document.getElementById('ammo').innerText = ammo;
-        }
-    });
-}
+  <div class="container">
+    <section class="section" id="foundations">
+      <h2>1) วางฐานการเงิน</h2>
+      <ul>
+        <li>มีเงินสำรองฉุกเฉินอย่างน้อย 3-6 เดือนของรายจ่าย</li>
+        <li>เคลียร์หนี้ที่ดอกเบี้ยสูงก่อน เช่น บัตรเครดิต</li>
+        <li>เปิดบัญชีเก็บออมแยกจากบัญชีใช้จ่าย</li>
+        <li>ฝึกบันทึกรายรับรายจ่ายทุกวัน</li>
+      </ul>
+      <p>👉 ถ้าไม่ทำขั้นนี้ ต่อให้หาเงินได้เยอะ สุดท้ายก็หมดอยู่ดี</p>
+    </section>
 
-// อัปเดตกระสุน
-function updateBullets(){
-    bullets.forEach((b,i)=>{
-        b.x += b.dx;
-        b.z += b.dz;
-        targets.forEach((t,j)=>{
-            let dx = t.position.x - b.x;
-            let dz = t.position.z - b.z;
-            if(Math.sqrt(dx*dx+dz*dz)<0.5){
-                document.getElementById('score').innerText = parseInt(document.getElementById('score').innerText)+1;
-                scene.remove(t);
-                targets.splice(j,1);
-                spawnTarget();
-                bullets.splice(i,1);
-            }
-        });
-    });
-}
+    <section class="section" id="income">
+      <h2>2) วิธีเพิ่มรายได้</h2>
+      <p>รายได้มี 2 แบบ: <b>Active Income</b> (ทำงานถึงได้เงิน) และ <b>Passive Income</b> (ไม่ทำก็ยังได้เงิน).</p>
+      <ul>
+        <li>หารายได้เสริม เช่น ขายของกิน (ลูกชิ้นทอด ไอติม ข้าวกล่อง)</li>
+        <li>ขายออนไลน์ผ่าน Shopee, Lazada หรือ TikTok Shop</li>
+        <li>รับงานฟรีแลนซ์ เช่น กราฟิก, เขียนเว็บ, ติวหนังสือ</li>
+        <li>ลงทุนสินทรัพย์ที่สร้าง Passive Income เช่น หุ้นปันผล, REITs</li>
+      </ul>
+    </section>
 
-// ลูปหลัก
-function animate(){
-    requestAnimationFrame(animate);
-    movePlayer();
-    autoLock();
-    updateBullets();
+    <section class="section" id="invest">
+      <h2>3) เริ่มลงทุน</h2>
+      <p>ถ้าจะรวยจริง ต้องให้เงินทำงานแทนเรา 💸</p>
+      <ul>
+        <li><b>กองทุนรวมดัชนี (Index Fund)</b> เช่น S&P500 — ลงทุนง่าย กระจายความเสี่ยง</li>
+        <li><b>หุ้นต่างประเทศ</b> เช่น Apple, Microsoft — เน้นเติบโตระยะยาว</li>
+        <li><b>กองทุนอสังหา (REITs)</b> — รับปันผลสม่ำเสมอ</li>
+        <li><b>ทองคำ / ETF ทอง</b> — ป้องกันเงินเฟ้อ</li>
+        <li><b>พันธบัตรรัฐบาล / Bond</b> — ความเสี่ยงต่ำ รายได้คงที่</li>
+        <li><b>คริปโตเคอร์เรนซี</b> เช่น Bitcoin — ความเสี่ยงสูง ผลตอบแทนผันผวน</li>
+      </ul>
+      <p>📱 แอพยอดนิยม: <b>Dime!, Finnomena, Bitkub Asset, SCB Easy Invest</b></p>
 
-    // อัปเดตกล้องตาม yaw/pitch
-    let camX = player.position.x + Math.sin(yaw)*5;
-    let camY = player.position.y + 2 + Math.sin(pitch)*2;
-    let camZ = player.position.z + Math.cos(yaw)*5;
-    camera.position.set(camX, camY, camZ);
-    camera.lookAt(player.position);
+      <h3>📊 ตารางเปรียบเทียบการลงทุน</h3>
+      <table class="compare-table">
+        <tr>
+          <th>ประเภทการลงทุน</th>
+          <th>ความเสี่ยง</th>
+          <th>ผลตอบแทนโดยเฉลี่ย</th>
+          <th>เหมาะกับใคร</th>
+        </tr>
+        <tr>
+          <td>กองทุนรวมดัชนี</td>
+          <td>กลาง</td>
+          <td>7-10% ต่อปี</td>
+          <td>มือใหม่ ลงทุนระยะยาว</td>
+        </tr>
+        <tr>
+          <td>หุ้นต่างประเทศ</td>
+          <td>สูง</td>
+          <td>10-20% ต่อปี</td>
+          <td>คนยอมรับความเสี่ยงได้</td>
+        </tr>
+        <tr>
+          <td>REITs</td>
+          <td>กลาง</td>
+          <td>4-6% ต่อปี</td>
+          <td>คนชอบ Passive Income</td>
+        </tr>
+        <tr>
+          <td>ทองคำ / ETF</td>
+          <td>กลาง</td>
+          <td>2-5% ต่อปี</td>
+          <td>เก็บมูลค่า ป้องกันเงินเฟ้อ</td>
+        </tr>
+        <tr>
+          <td>พันธบัตรรัฐบาล</td>
+          <td>ต่ำ</td>
+          <td>1-3% ต่อปี</td>
+          <td>คนเน้นความปลอดภัย</td>
+        </tr>
+        <tr>
+          <td>คริปโตเคอร์เรนซี</td>
+          <td>สูงมาก</td>
+          <td>ผันผวน 20%++</td>
+          <td>คนมีเงินเย็น กล้าเสี่ยง</td>
+        </tr>
+      </table>
+    </section>
 
-    renderer.render(scene, camera);
-}
-animate();
-</script>
+    <section class="section" id="salary-plans">
+      <h2>4) ตัวอย่างแผนเงินเดือน</h2>
+      <p>มาดูกันว่าแต่ละเงินเดือน ควรจัดสรรยังไงบ้าง 👇</p>
+      <table>
+        <tr>
+          <th>เงินเดือน</th>
+          <th>ออม</th>
+          <th>ลงทุน</th>
+          <th>ใช้จ่าย</th>
+        </tr>
+        <tr>
+          <td>15,000</td>
+          <td>10% (1,500)</td>
+          <td>15% (2,250)</td>
+          <td>75% (11,250)</td>
+        </tr>
+        <tr>
+          <td>30,000</td>
+          <td>20% (6,000)</td>
+          <td>20% (6,000)</td>
+          <td>60% (18,000)</td>
+        </tr>
+        <tr>
+          <td>50,000</td>
+          <td>20% (10,000)</td>
+          <td>30% (15,000)</td>
+          <td>50% (25,000)</td>
+        </tr>
+      </table>
+    </section>
+
+    <footer class="section" style="text-align:center;color:#bfcbd6;">
+      <p>💡 ทำทีละขั้น รวยแน่นอน — <span class="brand">สร้างด้วย nawinoi11</span> 😎</p>
+    </footer>
+  </div>
+</body>
+</html>
